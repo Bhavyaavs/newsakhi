@@ -161,21 +161,44 @@
     .divider { margin: 16px auto 12px; }
     .facts { margin-top: 0; gap: 4px 14px; font-size: 13px; }
   }
-  /* Service icons with hover */
+  /* Service icons — subtle premium micro-interactions (hover / keyboard focus only, no loops) */
   .svc-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 5px; margin: 22px auto 8px; max-width: 560px; }
-  .svc { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; width: 60px; -webkit-tap-highlight-color: transparent; }
-  .svc-ic { width: 58px; height: 58px; border-radius: 50%; border: 1.5px solid #dca9bd; background: rgba(255,255,255,.7);
-    display: grid; place-items: center; transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease; }
-  .svc-ic { overflow: hidden; }
-  .svc-ic img { width: 92%; height: 92%; object-fit: contain; transition: transform .35s ease; }
-  .svc-l { font-size: 10.5px; letter-spacing: .06em; white-space: nowrap; text-transform: uppercase; color: var(--ink); transition: color .25s ease; }
-  .svc:hover .svc-ic, .svc:focus-visible .svc-ic { transform: translateY(-5px); background: linear-gradient(160deg, #fff 0%, var(--blush) 100%);
-    border-color: var(--plum); box-shadow: 0 10px 22px rgba(156,56,98,.18), 0 0 0 4px rgba(217,166,80,.18); }
-  .svc:hover img, .svc:focus-visible img { transform: scale(1.12) rotate(-4deg); }
-  .svc:hover .svc-l, .svc:focus-visible .svc-l { color: var(--plum); }
+  .svc { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; width: 60px; border-radius: 12px; -webkit-tap-highlight-color: transparent; }
+  .svc-ic { position: relative; width: 58px; height: 58px; border-radius: 50%; border: 1.5px solid #e2bfcb; background: rgba(255,255,255,.7);
+    display: grid; place-items: center; overflow: hidden;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s ease, background-color .4s ease; }
+  .svc-ic > img { grid-area: 1 / 1; width: 92%; height: 92%; object-fit: contain; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+  .svc-l { font-size: 10.5px; letter-spacing: .06em; white-space: nowrap; text-transform: uppercase; color: #6d5a54; transition: color .4s ease; }
+  .svc:hover .svc-ic, .svc:focus-visible .svc-ic { transform: scale(1.045); border-color: #b9798f; background-color: #fff; }
+  .svc:hover .svc-l, .svc:focus-visible .svc-l { color: #2f2320; }
   .svc:focus-visible { outline: none; }
+  .svc:focus-visible .svc-ic { box-shadow: 0 0 0 2px var(--cream), 0 0 0 3.5px var(--plum); }
+
+  /* Brows — the brow lifts slightly */
+  .brow-top { clip-path: inset(0 0 62% 0); }
+  .brow-eye { clip-path: inset(38% 0 0 0); }
+  .svc--brows:hover .brow-top, .svc--brows:focus-visible .brow-top { transform: translateY(-2.5px); }
+  /* Spa — lotus opens gently */
+  .svc--spa .svc-ic > img { transform-origin: 50% 72%; }
+  .svc--spa:hover .svc-ic > img, .svc--spa:focus-visible .svc-ic > img { transform: scale(1.08, 1.02); }
+  /* Hair Cut — one snip */
+  .svc--haircut .svc-ic > img { transform-origin: 32% 68%; }
+  .svc--haircut:hover .svc-ic > img, .svc--haircut:focus-visible .svc-ic > img { animation: snip .5s ease-in-out 1; }
+  @keyframes snip { 0% { transform: rotate(0); } 35% { transform: rotate(-7deg); } 70% { transform: rotate(3deg); } 100% { transform: rotate(0); } }
+  /* Bridal & Facial — small sparkles */
+  .spk { position: absolute; width: 20%; height: 20%; fill: #c9974a; opacity: 0; transform: scale(.4); pointer-events: none;
+    transition: opacity .45s ease, transform .45s cubic-bezier(.2,.7,.2,1); }
+  .spk.s2 { width: 13%; height: 13%; transition-delay: .08s; }
+  .svc:hover .spk, .svc:focus-visible .spk { opacity: 1; transform: scale(1); }
+  .svc--bridal:hover .spk, .svc--bridal:focus-visible .spk { animation: shimmer .5s ease-out 1 forwards; }
+  @keyframes shimmer { 0% { opacity: 0; transform: scale(.4) rotate(0); } 60% { opacity: 1; transform: scale(1.1) rotate(20deg); } 100% { opacity: .85; transform: scale(1) rotate(20deg); } }
+
   @media (min-width: 720px) { .svc { width: 96px; } .svc-ic { width: 84px; height: 84px; } .svc-icons { gap: 10px 18px; } .svc-l { font-size: 11px; letter-spacing: .12em; } }
-  @media (prefers-reduced-motion: reduce) { .svc-ic, .svc-ic img { transition: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .svc-ic, .svc-ic > img, .spk, .svc-l { transition: none !important; animation: none !important; }
+    .svc:hover .svc-ic, .svc:focus-visible .svc-ic, .svc:hover .svc-ic > img, .svc:focus-visible .svc-ic > img,
+    .svc--brows:hover .brow-top { transform: none !important; }
+  }
   .tagline { font-family: 'Great Vibes', cursive; color: var(--plum); font-size: clamp(24px, 4.6vw, 34px); margin-top: 8px; }
 
   /* Crown glow: dots light up one after another */
@@ -237,24 +260,24 @@
     </h1>
     <p class="tagline">Where Beauty Meets Confidence</p>
     <div class="svc-icons" role="navigation" aria-label="Our services">
-      <a class="svc" href="#services" data-tab="Skin &amp; Brows">
-        <span class="svc-ic"><img src="assets/icon-brows.png" alt="Eyebrow shaping" width="90" height="90" loading="eager"></span>
+      <a class="svc svc--brows" href="#services" data-tab="Skin &amp; Brows">
+        <span class="svc-ic"><img class="brow-eye" src="assets/icon-brows.png" alt="Eyebrow shaping" width="90" height="90"><img class="brow-top" src="assets/icon-brows.png" alt="" width="90" height="90"></span>
         <span class="svc-l">Brows</span>
       </a>
-      <a class="svc" href="#bridal">
-        <span class="svc-ic"><img src="assets/icon-bridal.png" alt="Bridal makeup" width="90" height="90" loading="eager"></span>
+      <a class="svc svc--bridal" href="#bridal">
+        <span class="svc-ic"><img src="assets/icon-bridal.png" alt="Bridal makeup" width="90" height="90"><svg class="spk s1" style="top:10%;right:12%" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.2 2.3 6.9 7.5 7.5-5.2.6-6.9 2.3-7.5 7.5-.6-5.2-2.3-6.9-7.5-7.5 5.2-.6 6.9-2.3 7.5-7.5z"/></svg><svg class="spk s2" style="top:30%;right:6%" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.2 2.3 6.9 7.5 7.5-5.2.6-6.9 2.3-7.5 7.5-.6-5.2-2.3-6.9-7.5-7.5 5.2-.6 6.9-2.3 7.5-7.5z"/></svg></span>
         <span class="svc-l">Bridal</span>
       </a>
-      <a class="svc" href="#services" data-tab="Hair">
-        <span class="svc-ic"><img src="assets/icon-spa.png" alt="Spa" width="90" height="90" loading="eager"></span>
+      <a class="svc svc--spa" href="#services" data-tab="Hair">
+        <span class="svc-ic"><img src="assets/icon-spa.png" alt="Spa" width="90" height="90"></span>
         <span class="svc-l">Spa</span>
       </a>
-      <a class="svc" href="#services" data-tab="Skin &amp; Brows">
-        <span class="svc-ic"><img src="assets/icon-facial.png" alt="Facial" width="90" height="90" loading="eager"></span>
+      <a class="svc svc--facial" href="#services" data-tab="Skin &amp; Brows">
+        <span class="svc-ic"><img src="assets/icon-facial.png" alt="Facial" width="90" height="90"><svg class="spk s1" style="top:14%;left:10%" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.2 2.3 6.9 7.5 7.5-5.2.6-6.9 2.3-7.5 7.5-.6-5.2-2.3-6.9-7.5-7.5 5.2-.6 6.9-2.3 7.5-7.5z"/></svg><svg class="spk s2" style="top:34%;left:5%" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.2 2.3 6.9 7.5 7.5-5.2.6-6.9 2.3-7.5 7.5-.6-5.2-2.3-6.9-7.5-7.5 5.2-.6 6.9-2.3 7.5-7.5z"/></svg></span>
         <span class="svc-l">Facial</span>
       </a>
-      <a class="svc" href="#services" data-tab="Hair">
-        <span class="svc-ic"><img src="assets/icon-haircut.png" alt="Hair cut" width="90" height="90" loading="eager"></span>
+      <a class="svc svc--haircut" href="#services" data-tab="Hair">
+        <span class="svc-ic"><img src="assets/icon-haircut.png" alt="Hair cut" width="90" height="90"></span>
         <span class="svc-l">Hair Cut</span>
       </a>
     </div>
