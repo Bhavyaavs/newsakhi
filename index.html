@@ -164,7 +164,7 @@
 
   /* Hero photo — appears only when images/hero.jpg exists */
   .hero-photo { margin: 0; border-radius: 200px 200px 20px 20px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid var(--line); background: var(--blush); }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; display: block; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 45%; display: block; }
   .hero.has-photo .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; max-width: 1120px; }
   .hero.has-photo .hero-photo { max-width: 420px; justify-self: end; width: 100%; }
   @media (max-width: 860px) {
@@ -470,7 +470,7 @@
 
   // ====== PHOTOS: drop real New Sakhi photos into the images/ folder with these names ======
   // Anything missing is simply not shown. Add ?preview to the page URL to see empty slots.
-  const HERO_PHOTO = { file: "images/hero.jpg", alt: "Bridal look created at New Sakhi Beauty Parlour" };
+  const HERO_PHOTO = { file: "images/hero.jpg", alt: "Inside New Sakhi Beauty Parlour: arched mirrors, rose-gold lights and styling chairs" };
   const GALLERY = [
     { file: "images/work-1.jpg", label: "Bridal Makeup",  alt: "Bridal makeup by New Sakhi", tall: true },
     { file: "images/work-2.jpg", label: "Hair Styling",   alt: "Hair styling at New Sakhi" },
