@@ -4,7 +4,8 @@ NEW SAKHI — WEBSITE PHOTOS
 Put real photos in this folder with EXACTLY these names. Anything missing is simply not shown on the site.
 To see all slots (including empty ones), open the site with ?preview at the end of the link.
 
-hero.jpg     Big photo beside the logo on the first screen. Best: your strongest bridal look (portrait / vertical).
+hero.jpg     (optional) Big photo beside the logo on the first screen — a bridal look, vertical.
+founder.jpg  Founder photo in "The Heart of New Sakhi" section (already added).
 work-1.jpg   Bridal Makeup      (vertical photo — shown tall)
 work-2.jpg   Hair Styling
 work-3.jpg   Facial Care        (facial in progress, or products + clean facial bed)
