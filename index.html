@@ -132,7 +132,7 @@
   .wa-float { position: fixed; right: 16px; bottom: 16px; z-index: 30; background: #1f9d55; color: #fff; border-radius: 999px; padding: 14px 18px; font-weight: 600; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.2); font-size: 15px; }
   /* Brand (matches the New Sakhi flyer) */
   .brand-lockup { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 4px auto 6px; }
-  .emblem { position: relative; width: clamp(110px, 24vw, 170px); flex-shrink: 0; }
+  .emblem { position: relative; width: clamp(130px, 26vw, 180px); flex-shrink: 0; }
   .emblem img { width: 100%; display: block; mix-blend-mode: multiply; }
   .sparks { position: absolute; inset: 0; }
   .brand-text { text-align: left; }
@@ -144,11 +144,11 @@
   .tagline { font-family: 'Great Vibes', cursive; color: var(--plum); font-size: clamp(24px, 4.6vw, 34px); margin-top: 8px; }
 
   /* Crown glow: dots light up one after another */
-  .spark { position: absolute; width: 5.5%; aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%) scale(.6);
+  .spark { position: absolute; width: 9%; aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%) scale(.6);
     background: radial-gradient(circle, #fffbe8 0%, #ffe39a 35%, rgba(255,210,110,0) 70%); opacity: 0;
     animation: crownGlow 3s ease-in-out infinite; pointer-events: none; }
-  .spark::after { content: ""; position: absolute; inset: -120%; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,220,130,.55) 0%, rgba(255,220,130,0) 60%); }
+  .spark::after { content: ""; position: absolute; inset: -140%; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,214,110,.75) 0%, rgba(255,220,130,0) 60%); }
   .spark:nth-child(2) { animation-delay: .25s; }
   .spark:nth-child(3) { animation-delay: .5s; }
   .spark:nth-child(4) { animation-delay: .75s; }
@@ -171,7 +171,7 @@
 
 <nav>
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="New Sakhi Beauty Salon"><img src="assets/sakhi-emblem.png" alt=""><span class="n">New</span><span class="s">Sakhi</span></a>
+    <a href="#top" class="logo" aria-label="New Sakhi Beauty Salon"><img src="assets/sakhi-emblem.png?v=2" alt=""><span class="n">New</span><span class="s">Sakhi</span></a>
     <div class="nav-links">
       <a href="#bridal">Bridal</a>
       <a href="#services">Services & Prices</a>
@@ -186,7 +186,7 @@
     <span class="eyebrow">15+ Years & Counting</span>
     <h1 class="brand-lockup" aria-label="New Sakhi Beauty Salon">
       <span class="emblem">
-        <img src="assets/sakhi-emblem.png" alt="New Sakhi crown emblem">
+        <img src="assets/sakhi-emblem.png?v=2" alt="New Sakhi crown emblem">
         <span class="sparks" aria-hidden="true">
           <i class="spark" style="left:27.8%;top:9.1%"></i>
           <i class="spark" style="left:36.6%;top:4.7%"></i>
