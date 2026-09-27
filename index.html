@@ -142,9 +142,21 @@
   .brand-salon { font-family: 'Cinzel', serif; letter-spacing: .32em; font-size: clamp(12px, 2.4vw, 18px); color: var(--ink); display: flex; align-items: center; gap: 10px; margin-top: 4px; }
   .brand-salon::before, .brand-salon::after { content: ""; width: 22px; height: 1px; background: var(--gold); }
   @media (max-width: 600px) {
-    .brand-lockup { flex-direction: column; gap: 8px; }
-    .brand-text { text-align: center; }
-    .brand-salon { justify-content: center; }
+    .hero { padding: 22px 0 26px; }
+    .eyebrow { margin-bottom: 8px; font-size: 11px; }
+    .brand-lockup { gap: 4px; margin: 0 auto; }
+    .emblem { width: 82px; }
+    .brand-sakhi { font-size: clamp(34px, 11vw, 46px); }
+    .brand-salon { font-size: 11px; letter-spacing: .24em; gap: 6px; }
+    .brand-salon::before, .brand-salon::after { width: 14px; }
+    .tagline { font-size: 24px; margin-top: 4px; }
+    .svc-icons { margin: 14px auto 2px; }
+    .hero .tag { font-size: 14.5px; margin: 10px auto 2px; line-height: 1.5; }
+    .hero .te { font-size: 13.5px; }
+    .hero .cta { margin-top: 16px; gap: 10px; }
+    .hero .btn { padding: 11px 18px; font-size: 14.5px; }
+    .divider { margin: 16px auto 12px; }
+    .facts { margin-top: 0; gap: 4px 14px; font-size: 13px; }
   }
   /* Service icons with hover */
   .svc-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 8px; margin: 22px auto 8px; max-width: 560px; }
