@@ -136,10 +136,15 @@
   .sparks { position: absolute; inset: 0; }
   .brand-text { text-align: left; }
   .brand-new { font-family: 'Great Vibes', cursive; color: var(--plum); font-size: clamp(30px, 6vw, 48px); line-height: .8; display: block; margin-left: 10%; }
-  .brand-sakhi { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(58px, 13vw, 110px); line-height: .95;
+  .brand-sakhi { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(44px, 9vw, 92px); line-height: 1; white-space: nowrap;
     background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; display: block; }
   .brand-salon { font-family: 'Cinzel', serif; letter-spacing: .32em; font-size: clamp(12px, 2.4vw, 18px); color: var(--ink); display: flex; align-items: center; gap: 10px; margin-top: 4px; }
   .brand-salon::before, .brand-salon::after { content: ""; width: 22px; height: 1px; background: var(--gold); }
+  @media (max-width: 600px) {
+    .brand-lockup { flex-direction: column; gap: 8px; }
+    .brand-text { text-align: center; }
+    .brand-salon { justify-content: center; }
+  }
   .tagline { font-family: 'Great Vibes', cursive; color: var(--plum); font-size: clamp(24px, 4.6vw, 34px); margin-top: 8px; }
 
   /* Crown glow: dots light up one after another */
@@ -170,7 +175,7 @@
 
 <nav>
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="New Sakhi Beauty Parlour"><img src="assets/sakhi-emblem.png?v=2" alt=""><span class="n">New</span><span class="s">Sakhi</span></a>
+    <a href="#top" class="logo" aria-label="New Sakhi Beauty Parlour"><img src="assets/sakhi-emblem.png?v=2" alt=""><span class="s">New Sakhi</span></a>
     <div class="nav-links">
       <a href="#bridal">Bridal</a>
       <a href="#services">Services & Prices</a>
@@ -195,8 +200,7 @@
         </span>
       </span>
       <span class="brand-text">
-        <span class="brand-new">New</span>
-        <span class="brand-sakhi">Sakhi</span>
+        <span class="brand-sakhi">New Sakhi</span>
         <span class="brand-salon">BEAUTY PARLOUR</span>
       </span>
     </h1>
