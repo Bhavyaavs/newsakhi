@@ -112,35 +112,60 @@
   .section-head p { color: var(--muted); margin-top: 6px; }
 
   /* Bridal */
-  .bridal { background: var(--plum); color: #fff; }
+  .bridal { background: var(--plum); color: #fff; padding: 76px 0; }
+  .bridal .section-head { margin-bottom: 44px; }
   .bridal .section-head h2, .bridal .section-head p { color: #fff; }
-  .bridal .section-head p { opacity: .8; }
-  .bridal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  .bcard { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 16px; padding: 22px; }
-  .bcard h3 { font-size: 24px; }
-  .bcard .price { font-size: 20px; color: #f1d7a4; margin: 6px 0; font-weight: 500; }
-  .bcard p { font-size: 14px; opacity: .85; }
-  .bridal .note { text-align: center; margin-top: 26px; opacity: .9; }
+  .bridal .section-head p { opacity: .78; font-size: 15px; letter-spacing: .02em; }
+  .bridal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 960px) { .bridal-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .bridal-grid { grid-template-columns: 1fr; gap: 14px; } }
+  .bcard { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); border-radius: 18px; padding: 28px 24px 26px;
+    display: flex; flex-direction: column; transition: transform .35s ease, border-color .35s ease, background-color .35s ease; }
+  .bcard::before { content: ""; width: 28px; height: 1px; background: #f1d7a4; margin-bottom: 18px; opacity: .8; }
+  .bcard:hover { transform: translateY(-2px); border-color: rgba(241,215,164,.5); background-color: rgba(255,255,255,.09); }
+  .bcard h3 { font-size: 25px; font-weight: 600; letter-spacing: .01em; }
+  .bcard .price { font-family: 'Playfair Display', serif; font-size: 21px; color: #f1d7a4; margin: 10px 0 12px; font-weight: 600; }
+  .bcard p { font-size: 14.5px; line-height: 1.65; opacity: .82; }
+  .bridal .note { text-align: center; margin-top: 34px; opacity: .9; font-size: 15px; }
+  @media (prefers-reduced-motion: reduce) { .bcard { transition: none; } .bcard:hover { transform: none; } }
+
+  /* Our Work gallery — shows only photos that exist in /images (add ?preview to the URL to see the layout) */
+  .work-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 210px; gap: 12px; }
+  .work-item { position: relative; margin: 0; border-radius: 14px; overflow: hidden; background: var(--blush); border: 1px solid var(--line); }
+  .work-item.tall { grid-row: span 2; }
+  .work-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+  .work-item:hover img { transform: scale(1.03); }
+  .work-item figcaption { position: absolute; left: 10px; bottom: 10px; background: rgba(255,253,250,.92); color: var(--ink);
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; }
+  @media (max-width: 760px) { .work-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; gap: 10px; } }
+  @media (prefers-reduced-motion: reduce) { .work-item img { transition: none; } .work-item:hover img { transform: none; } }
+  .ph { width: 100%; height: 100%; display: grid; place-content: center; text-align: center; gap: 4px; color: var(--muted); font-size: 12px; padding: 12px;
+    background: linear-gradient(160deg, #fbf1f4, #f4e9dd); }
+  .ph b { color: var(--plum); font-weight: 500; font-size: 13px; }
+
+  /* Hero photo — appears only when images/hero.jpg exists */
+  .hero-photo { margin: 0; border-radius: 200px 200px 20px 20px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid var(--line); background: var(--blush); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero.has-photo .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; max-width: 1120px; }
+  .hero.has-photo .hero-photo { max-width: 420px; justify-self: end; width: 100%; }
+  @media (max-width: 860px) {
+    .hero.has-photo .wrap { grid-template-columns: 1fr; gap: 0; }
+    .hero.has-photo .hero-photo { justify-self: center; max-width: 320px; aspect-ratio: 4 / 3; border-radius: 160px 160px 18px 18px; margin-top: 26px; }
+  }
 
   /* Services */
   .tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 26px; }
   .tab { border: 1px solid var(--line); background: var(--paper); color: var(--muted); padding: 8px 16px; border-radius: 999px; font: inherit; font-size: 14px; cursor: pointer; }
   .tab[aria-selected="true"] { background: var(--plum); color: #fff; border-color: var(--plum); }
   .menu { max-width: 720px; margin: 0 auto; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 10px 26px 20px; }
-  .menu h3 { font-size: 22px; color: var(--plum); margin: 18px 0 6px; font-style: italic; }
-  .row { display: flex; align-items: baseline; gap: 10px; padding: 7px 0; font-size: 15px; }
-  .row .name { flex-shrink: 1; }
+  .menu h3 { font-size: 23px; color: var(--plum); margin: 24px 0 6px; font-style: italic; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  .row { display: flex; align-items: baseline; gap: 10px; padding: 9px 0; font-size: 15.5px; }
+  .row .name { flex-shrink: 1; color: var(--ink); }
   .row .name small { color: var(--muted); font-size: 12px; }
-  .row .dots { flex: 1; border-bottom: 1px dotted #cdbfb2; transform: translateY(-4px); min-width: 20px; }
-  .row .amt { font-weight: 500; white-space: nowrap; }
+  .row .dots { flex: 1; border-bottom: 1px dotted #ddd0c4; transform: translateY(-4px); min-width: 20px; }
+  .row .amt { font-weight: 600; white-space: nowrap; color: var(--plum); font-variant-numeric: tabular-nums; }
   .menu-note { text-align: center; color: var(--muted); font-size: 13px; margin-top: 14px; }
 
-  /* Why */
-  .why { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
-  .why-item { text-align: center; padding: 20px; }
-  .why-item .num { font-family: 'Cormorant Garamond', serif; font-size: 44px; color: var(--plum); font-weight: 700; }
-  .why-item p { color: var(--muted); font-size: 14px; }
 
   /* Visit */
   .visit-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: stretch; }
@@ -271,6 +296,7 @@
 
 <header class="hero" id="top">
   <div class="wrap">
+    <div class="hero-copy">
     <span class="eyebrow">Since 2007 · Akkayapalem</span>
     <h1 class="brand-lockup" aria-label="New Sakhi Beauty Parlour">
       <span class="emblem">
@@ -317,6 +343,8 @@
       <a class="btn btn-wa js-wa" href="#"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Book on WhatsApp</a>
       <a class="btn btn-ghost" href="#services">See Prices</a>
     </div>
+    </div>
+    <figure class="hero-photo" id="hero-photo" hidden></figure>
   </div>
 </header>
 
@@ -345,6 +373,16 @@
   </div>
 </section>
 
+<section class="work" id="work" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Our Work</h2>
+      <p>A glimpse of the beauty looks and care we create at New Sakhi.</p>
+    </div>
+    <div class="work-grid" id="work-grid"></div>
+  </div>
+</section>
+
 <section id="services">
   <div class="wrap">
     <div class="section-head">
@@ -354,14 +392,6 @@
     <div class="tabs" role="tablist" id="tabs"></div>
     <div class="menu" id="menu"></div>
     <p class="menu-note">"onwards / starting" prices depend on hair length and products. Prices in ₹.</p>
-  </div>
-</section>
-
-<section class="why">
-  <div class="wrap why-grid">
-    <div class="why-item"><div class="num">2007</div><p>Serving Akkayapalem families since</p></div>
-    <div class="why-item"><div class="num">7</div><p>Days a week — we're open when you need us</p></div>
-    <div class="why-item"><div class="num">50+</div><p>Services across skin, hair, waxing & bridal</p></div>
   </div>
 </section>
 
@@ -402,6 +432,62 @@
   // ====== EDIT THIS: salon phone number with country code, digits only (e.g. 919876543210) ======
   const PHONE = "919866868708";
   // ================================================================================================
+
+  // ====== PHOTOS: drop real New Sakhi photos into the images/ folder with these names ======
+  // Anything missing is simply not shown. Add ?preview to the page URL to see empty slots.
+  const HERO_PHOTO = { file: "images/hero.jpg", alt: "Bridal look created at New Sakhi Beauty Parlour" };
+  const GALLERY = [
+    { file: "images/work-1.jpg", label: "Bridal Makeup",  alt: "Bridal makeup by New Sakhi", tall: true },
+    { file: "images/work-2.jpg", label: "Hair Styling",   alt: "Hair styling at New Sakhi" },
+    { file: "images/work-3.jpg", label: "Facial Care",    alt: "Facial and skin care at New Sakhi" },
+    { file: "images/work-4.jpg", label: "Pre-Bridal",     alt: "Pre-bridal look by New Sakhi", tall: true },
+    { file: "images/work-5.jpg", label: "Our Parlour",    alt: "Inside New Sakhi Beauty Parlour, Akkayapalem" },
+    { file: "images/work-6.jpg", label: "Finished Looks", alt: "Finished beauty look at New Sakhi" },
+    { file: "images/work-7.jpg", label: "Saree Draping",  alt: "Saree draping by New Sakhi" },
+    { file: "images/work-8.jpg", label: "Party Makeup",   alt: "Party makeup by New Sakhi" },
+  ];
+  // ===========================================================================================
+  const PREVIEW = new URLSearchParams(location.search).has("preview");
+
+  function photo(item, eager) {
+    const img = new Image();
+    img.src = item.file; img.alt = item.alt;
+    img.decoding = "async";
+    if (!eager) img.loading = "lazy";
+    if (item.srcset) { img.srcset = item.srcset; img.sizes = item.sizes || "(max-width: 760px) 50vw, 25vw"; }
+    return img;
+  }
+  function placeholder(label, file) {
+    const d = document.createElement("div");
+    d.className = "ph"; d.innerHTML = `<b>${label}</b><span>Add photo: ${file}</span>`;
+    return d;
+  }
+
+  (function heroPhoto() {
+    const fig = document.getElementById("hero-photo"), hero = document.querySelector(".hero");
+    const show = () => { fig.hidden = false; hero.classList.add("has-photo"); };
+    const img = photo(HERO_PHOTO, true);
+    img.onload = () => { fig.replaceChildren(img); show(); };
+    img.onerror = () => { if (PREVIEW) { fig.replaceChildren(placeholder("Hero photo", HERO_PHOTO.file)); show(); } };
+  })();
+
+  (function gallery() {
+    const section = document.getElementById("work"), grid = document.getElementById("work-grid");
+    // Check which photos exist (tiny HEAD requests), then add them as lazy-loaded images in order.
+    Promise.all(GALLERY.map(item =>
+      fetch(item.file, { method: "HEAD" }).then(r => r.ok).catch(() => false)
+    )).then(exists => {
+      GALLERY.forEach((item, i) => {
+        if (!exists[i] && !PREVIEW) return;
+        const fig = document.createElement("figure");
+        fig.className = "work-item" + (item.tall ? " tall" : "");
+        const cap = document.createElement("figcaption"); cap.textContent = item.label;
+        fig.append(exists[i] ? photo(item, false) : placeholder(item.label, item.file), cap);
+        grid.appendChild(fig);
+      });
+      if (grid.children.length) section.hidden = false;
+    });
+  })();
 
   const waText = encodeURIComponent("Namaste! I'd like to book an appointment at New Sakhi.");
   document.querySelectorAll(".js-wa").forEach(a => { a.href = `https://wa.me/${PHONE}?text=${waText}`; a.target = "_blank"; a.rel = "noopener"; });
