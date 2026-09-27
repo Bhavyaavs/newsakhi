@@ -95,6 +95,7 @@
   .hero .tag { font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); margin: 14px auto 6px; max-width: 560px; }
   .hero .te { color: #5b4a44; font-size: 16px; line-height: 1.6; }
   .hero .cta { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 24px; }
+  @media (max-width: 330px) { .hero .cta { flex-wrap: wrap; } }
   /* Trust strip */
   .trust { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .trust ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 0; padding: 14px 16px; font-size: 13.5px; letter-spacing: .04em; color: #4a3b36; }
@@ -244,9 +245,10 @@
     .hero .svc-l { font-size: 9.5px; }
     .hero .tag { font-size: 14.5px; margin: 10px auto 2px; line-height: 1.5; }
     .hero .te { font-size: 15px; }
-    .hero .cta { margin-top: 16px; gap: 10px; }
-    .hero .btn { padding: 11px 18px; font-size: 14.5px; }
-    .hero .btn-wa { padding: 12px 20px; }
+    .hero .cta { margin-top: 16px; gap: 8px; flex-wrap: nowrap; }
+    .hero .btn { padding: 11px 14px; font-size: 14px; white-space: nowrap; gap: 6px; }
+    .hero .btn-wa { padding: 11px 16px; }
+    .hero .btn-wa svg { width: 16px; height: 16px; }
   }
   /* Service icons — subtle premium micro-interactions (hover / keyboard focus only, no loops) */
   .svc-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 5px; margin: 26px auto 0; max-width: 560px; }
