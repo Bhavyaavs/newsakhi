@@ -421,7 +421,7 @@
       <div class="bcard"><h3>Pre-Bridal Styling</h3><div class="price">₹2,500 onwards</div><p>Mehendi, Haldi and pre-wedding shoots.</p></div>
       <div class="bcard"><h3>Bridesmaids & Family</h3><div class="price">₹2,500</div><p>Coordinated looks for your bridesmaids and close family.</p></div>
     </div>
-    <p class="note">Custom bridal packages available on request — <a class="js-wa" href="#" style="color:#f1d7a4">ask us on WhatsApp</a>.</p>
+    <p class="note">Custom bridal packages available on request — <a class="js-wa" data-msg="Namaste! I'm interested in bridal makeup. Please share the package details." href="#" style="color:#f1d7a4">ask us on WhatsApp</a>.</p>
   </div>
 </section>
 
@@ -478,7 +478,7 @@
           <dt>Phone</dt><dd><a class="js-call js-phone-text" href="#">Add phone number</a></dd>
         </dl>
         <div class="cta">
-          <a class="btn btn-wa js-wa" href="#">WhatsApp us</a>
+          <a class="btn btn-wa js-wa" data-msg="Namaste! I'd like to visit New Sakhi. When can I come?" href="#">WhatsApp us</a>
           <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dali+Raju+Super+Market+Akkayyapalem+Visakhapatnam">Get Directions</a>
         </div>
       </div>
@@ -557,8 +557,13 @@
     });
   })();
 
-  const waText = encodeURIComponent("Namaste! I'd like to book an appointment at New Sakhi.");
-  document.querySelectorAll(".js-wa").forEach(a => { a.href = `https://wa.me/${PHONE}?text=${waText}`; a.target = "_blank"; a.rel = "noopener"; });
+  // WhatsApp messages: each button can set its own text with data-msg; "(via website)" lets the salon count website enquiries
+  const WA_DEFAULT = "Namaste! I'd like to book an appointment at New Sakhi.";
+  const WA_TAG = " (via website)";
+  document.querySelectorAll(".js-wa").forEach(a => {
+    a.href = `https://wa.me/${PHONE}?text=${encodeURIComponent((a.dataset.msg || WA_DEFAULT) + WA_TAG)}`;
+    a.target = "_blank"; a.rel = "noopener";
+  });
   document.querySelectorAll(".js-call").forEach(a => { a.href = `tel:+${PHONE}`; });
   if (!PHONE.includes("X")) {
     document.querySelectorAll(".js-phone-text").forEach(a => { a.textContent = "+" + PHONE.slice(0, 2) + " " + PHONE.slice(2); });
